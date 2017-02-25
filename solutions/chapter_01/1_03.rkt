@@ -37,9 +37,9 @@
 (define
   (sum-of-two-greater-squares x y z)
   (cond
-    ((and (<= x y) (<= x z)) (sum-of-squares y z))
-    ((and (<= y x) (<= y z)) (sum-of-squares x z))
-    ((and (<= z x) (<= z y)) (sum-of-squares x y))
+    ((= (min x y z) x) (sum-of-squares y z))
+    ((= (min x y z) y) (sum-of-squares x z))
+    ((= (min x y z) z) (sum-of-squares x y))
   )
 )
 
