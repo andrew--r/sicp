@@ -1,0 +1,15 @@
+language: racket
+
+sudo: false
+
+env:
+  global:
+    - RACKET_DIR=~/racket
+    - RACKET_VERSION=6.8
+
+before_install:
+  - cat install-racket.sh | bash # pipe to bash not sh!
+  - export PATH="${RACKET_DIR}/bin:${PATH}" #install-racket.sh can't set for us
+
+script:
+  - raco test solutions

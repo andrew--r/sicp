@@ -1,0 +1,13 @@
+# General files
+*~
+.DS_Store
+
+# Build files
+compiled/
+
+# Development stuff
+*.sublime-workspace
+*.pyc
+.vagrant
+.idea
+.vscode
