@@ -11,8 +11,7 @@
       y))
 
 ; Then he evaluates the expression
-
-(test 0 (p))
+; (test 0 (p))
 
 ; What behavior will Ben observe with an interpreter that uses applicative-order evaluation?
 ; What behavior will he observe with an interpreter that uses normal-order evaluation? Explain your answer.
