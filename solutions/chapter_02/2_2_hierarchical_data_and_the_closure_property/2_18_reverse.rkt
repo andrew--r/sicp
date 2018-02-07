@@ -1,5 +1,6 @@
 #lang racket
 
+(provide reverse)
 (define (reverse items)
   (define (iter l result)
     (if (null? l)
