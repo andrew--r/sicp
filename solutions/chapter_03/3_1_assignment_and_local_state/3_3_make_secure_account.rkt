@@ -14,7 +14,7 @@
     (if (eq? account-password password)
       (cond ((eq? command 'withdraw) withdraw)
             ((eq? command 'deposit) deposit))
-      (lambda (n) "Invalid password")))
+      (lambda args "Invalid password")))
 
   dispatch
 )
