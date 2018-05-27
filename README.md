@@ -14,3 +14,5 @@ This repository contains my solutions of exercises from the book.
   - [1.2 Procedures and the Processes They Generate](./solutions/chapter_01/1_2_procedures_and_the_processes_they_generate)
 - [Chapter 2. Building Abstractions with Data](./solutions/chapter_02)
   - [2.2 Hierarchical Data and the Closure Property](./solutions/chapter_02/2_2_hierarchical_data_and_the_closure_property)
+- [Chapter 3. Modularity, Objects, and State](./solutions/chapter_03)
+  - [3.1 Assignment and Local State](./solutions/chapter_03/3_1_assignment_and_local_state)
