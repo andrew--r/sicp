@@ -1,10 +1,8 @@
 #lang racket
 (require compatibility/mlist)
+(require "last_mpair.rkt")
 
-(define (last-mpair x)
-  (if (null? x)
-    x
-    (mlist-tail x (- (mlength x) 1))))
+(provide make-cycle)
 
 (define (make-cycle x)
   (set-mcdr! (last-mpair x) x)

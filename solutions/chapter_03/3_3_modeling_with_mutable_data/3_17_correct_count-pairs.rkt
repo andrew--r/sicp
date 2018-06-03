@@ -1,23 +1,9 @@
 #lang racket
 (require compatibility/mlist)
+(require "make_mpairs_storage.rkt")
 
 (define (correct-count-mpairs x)
-  (define counted-mpairs
-    (let ((counted-mpairs-list (mlist)))
-      (define (contains? item)
-        (define (inner temp-list)
-          (cond ((null? temp-list) false)
-                ((eq? (mcar temp-list) item) true)
-                (else (inner (mcdr temp-list)))))
-        (inner counted-mpairs-list))
-      
-      (define (add mp)
-        (set! counted-mpairs-list (mcons mp counted-mpairs-list)))
-
-      (lambda (message)
-        (cond ((eq? message 'contains?) contains?)
-              ((eq? message 'add) add)
-              (else (error "Unknown operation on counted-mpairs"))))))
+  (define counted-mpairs (make-mpairs-storage))
 
   (define (inner item)
     (cond ((not (mpair? item)) 0)
