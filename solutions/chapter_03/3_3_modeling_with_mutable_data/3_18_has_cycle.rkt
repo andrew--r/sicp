@@ -18,7 +18,7 @@
 
 (module+ test
     (require rackunit)
-    (test-case "3_17 detect-cycles"
+    (test-case "3_18 has-cycle?"
       (define cycle (make-cycle (mlist 1 2 3)))
       (check-equal? (has-cycle? cycle) true)
       (check-equal? (has-cycle? (mappend (mlist 'a 'b) cycle)) true)
