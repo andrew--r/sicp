@@ -1,33 +1,29 @@
 #lang racket
 (require compatibility/mlist)
 
-(define (mappend ml item)
-  (if (null? ml)
-    (mlist item)
-    (set-mcar! ml item)))
-
 (define (correct-count-mpairs x)
-  (define counted-mpairs (mlist))
+  (define counted-mpairs
+    (let ((counted-mpairs-list (mlist)))
+      (define (contains? item)
+        (define (inner temp-list)
+          (cond ((null? temp-list) false)
+                ((eq? (mcar temp-list) item) true)
+                (else (inner (mcdr temp-list)))))
+        (inner counted-mpairs-list))
+      
+      (define (add mp)
+        (set! counted-mpairs-list (mcons mp counted-mpairs-list)))
 
-  (define (mark-mpair-as-counted mp)
-    (set! counted-mpairs (mcons mp counted-mpairs)))
-
-  (define (mpair-counted? mp)
-    (define (inner head tail)
-      (cond ((eq? mp head) true)
-            ((null? tail) false)
-            (else (inner (mcar tail) 
-                          (mcdr tail)))))
-    (if (null? counted-mpairs)
-      false
-      (inner (mcar counted-mpairs)
-           (mcdr counted-mpairs))))
+      (lambda (message)
+        (cond ((eq? message 'contains?) contains?)
+              ((eq? message 'add) add)
+              (else (error "Unknown operation on counted-mpairs"))))))
 
   (define (inner item)
     (cond ((not (mpair? item)) 0)
-    ((mpair-counted? item) 0)
+    (((counted-mpairs 'contains?) item) 0)
     (else (begin
-            (mark-mpair-as-counted item)
+            ((counted-mpairs 'add) item)
             (+ (inner (mcar item))
                 (inner (mcdr item))
                 1)))))
